@@ -1,7 +1,6 @@
 const express = require('express');
 
 const {
-  checkBody,
   getTours,
   getTour,
   createTour,
@@ -14,7 +13,7 @@ const router = express.Router();
 router
   .route('/')
   .get(getTours)
-  .post(checkBody, createTour);
+  .post(createTour);
 
 router
   .route('/:id')

@@ -11,14 +11,14 @@ mongoose
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-  }).then(() => console.log('DB connection successfull!'))
+  }).then(() => console.log('MongoDB Compass connection successfull!'))
 
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-  }).then(() => console.log('DB connection successfull!'))
+  }).then(() => console.log('MongoDB Atlas connection successfull!'))
 
 
 const port = process.env.PORT || 3000;
