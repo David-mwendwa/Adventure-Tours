@@ -19,6 +19,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: [true, 'Please provide a password'],
     minlength: 8,
+    select: false,
   },
   passwordConfirm: {
     type: String,
@@ -39,11 +40,18 @@ userSchema.pre('save', async function (next) {
 
   // Hash the password with cost of 12
   this.password = await bycrypt.hash(this.password, 12);
-  
+
   // Delete passwordConfirm field
   this.passwordConfirm = undefined;
   next();
 });
+
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bycrypt.compare(candidatePassword, userPassword);
+};
 
 const User = new mongoose.model('User', userSchema);
 
