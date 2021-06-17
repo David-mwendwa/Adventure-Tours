@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   req.requestTime = moment().format('YYYY-MM-DD @HH:MM:ss');
+  //console.log(req.headers);
   next();
 });
 
